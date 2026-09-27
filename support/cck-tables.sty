@@ -1,0 +1,13 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cck-tables}[2026/09/27 Tables for Compilonomikon]
+\RequirePackage{booktabs}
+\RequirePackage{xparse}
+% Each table takes a column specification and a body of rows.
+\NewDocumentCommand{\ccktable}{m m}{%
+  \begin{center}\begin{tabular}{#1}\toprule
+  #2\\\bottomrule
+  \end{tabular}\end{center}%
+}
+\NewDocumentCommand{\grammarTable}{m}{\ccktable{ll}{Production & Rule\\\midrule #1}}
+\NewDocumentCommand{\opcodeTable}{m}{\ccktable{lll}{Opcode & Operands & Meaning\\\midrule #1}}
+\NewDocumentCommand{\registerTable}{m}{\ccktable{lll}{Register & Role & Convention\\\midrule #1}}

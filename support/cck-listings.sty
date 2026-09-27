@@ -1,0 +1,15 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cck-listings}[2026/09/27 Code listings for Compilonomikon]
+\RequirePackage{listings}
+\RequirePackage{xparse}
+\lstdefinestyle{cck-base}{basicstyle=\ttfamily\small,columns=fullflexible,
+  keepspaces=true,breaklines=true,frame=single,framesep=4pt,
+  showstringspaces=false,tabsize=2}
+\lstdefinestyle{cck-c}{style=cck-base,language=C}
+\lstdefinestyle{cck-scheme}{style=cck-base,language=Lisp,
+  morekeywords={define,lambda,let,letrec,cond,begin}}
+\lstdefinestyle{cck-ir}{style=cck-base,language={}}
+\lstset{style=cck-base}
+% Listings uses a verbatim scanner, so these environments must delegate directly.
+\lstnewenvironment{kernel-code}[1][]{\lstset{style=cck-c,#1}}{}
+\lstnewenvironment{output-code}[1][]{\lstset{style=cck-ir,#1}}{}
